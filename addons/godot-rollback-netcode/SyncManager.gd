@@ -1169,7 +1169,7 @@ func _physics_process(_delta: float) -> void:
 		
 		# Only serialize and send input when we have real remote peers.
 		if peers.size() > 0:
-			var serialized_input: PoolByteArray = message_serializer.serialize_input(local_input)
+			var serialized_input: PackedByteArray = message_serializer.serialize_input(local_input)
 			
 			# check that the serialized then unserialized input matches the original 
 			if debug_check_message_serializer_roundtrip:
@@ -1301,7 +1301,7 @@ func _calculate_data_hash(input: Dictionary) -> int:
 	input['$'] = serialized_hash
 	return serialized_hash
 
-func _on_received_input_tick(peer_id: int, serialized_msg: PoolByteArray) -> void:
+func _on_received_input_tick(peer_id: int, serialized_msg: PackedByteArray) -> void:
 	if not started:
 		return
 	

@@ -83,7 +83,7 @@ func _on_OnlineMatch_webrtc_peer_removed(webrtc_peer: WebRTCPeerConnection, play
 func _on_OnlineMatch_disconnected() -> void:
 	_data_channels.clear()
 
-func send_input_tick(peer_id: int, msg: PoolByteArray) -> void:
+func send_input_tick(peer_id: int, msg: PackedByteArray) -> void:
 	if _data_channels.has(peer_id) and _data_channels[peer_id].get_ready_state() == WebRTCDataChannel.STATE_OPEN:
 		var data_channel: WebRTCDataChannel = _data_channels[peer_id]
 		

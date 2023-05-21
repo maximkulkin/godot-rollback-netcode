@@ -214,17 +214,17 @@ func _draw_network_arrows(start_positions: Dictionary, end_positions: Dictionary
 		var sqrt12 = sqrt(0.5)
 		var vector: Vector2 = end_position - start_position
 		var t := Transform2D(vector.angle(), end_position)
-		var points := PoolVector2Array([
+		var points := PackedVector2Array([
 			t.xform(Vector2(0, 0)),
 			t.xform(Vector2(-NETWORK_ARROW_SIZE, sqrt12 * NETWORK_ARROW_SIZE)),
 			t.xform(Vector2(-NETWORK_ARROW_SIZE, sqrt12 * -NETWORK_ARROW_SIZE)),
 		])
-		var colors := PoolColorArray([
+		var colors := PackedColorArray([
 			color,
 			color,
 			color,
 		])
-		draw_primitive(points, colors, PoolVector2Array())
+		draw_primitive(points, colors, PackedVector2Array())
 
 func _draw() -> void:
 	if log_data == null or log_data.is_loading():

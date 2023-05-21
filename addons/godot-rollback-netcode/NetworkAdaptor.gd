@@ -47,7 +47,7 @@ func send_remote_start(peer_id: int) -> void:
 func send_remote_stop(peer_id: int) -> void:
 	push_error("UNIMPLEMENTED ERROR: NetworkAdaptor.send_remote_stop()")
 
-func send_input_tick(peer_id: int, msg: PoolByteArray) -> void:
+func send_input_tick(peer_id: int, msg: PackedByteArray) -> void:
 	push_error("UNIMPLEMENTED ERROR: NetworkAdaptor.send_input_tick()")
 
 func is_network_host() -> bool:

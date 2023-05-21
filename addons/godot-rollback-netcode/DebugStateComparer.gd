@@ -129,7 +129,7 @@ static func _convert_array_to_dictionary(a: Array) -> Dictionary:
 	return d
 
 func print_mismatches() -> String:
-	var data := PoolStringArray()
+	var data := PackedStringArray()
 	
 	for mismatch in mismatches:
 		match mismatch.type:
@@ -155,4 +155,4 @@ func print_mismatches() -> String:
 				data.append("REMOTE: %s" % JSON.stringify(mismatch.remote_state, JSON_INDENT))
 				data.append('')
 	
-	return data.join("\n")
+	return "\n".join(data)

@@ -17,13 +17,15 @@ enum InputMessageKey {
 	STATE_HASHES,
 }
 
-func serialize_input(input: Dictionary) -> PoolByteArray:
-	return var2bytes(input)
+func serialize_input(input: Dictionary) -> PackedByteArray:
+	var serialized = PackedByteArray()
+	serialized.encode_var(0, input)
+	return serialized
 
-func unserialize_input(serialized: PoolByteArray) -> Dictionary:
-	return bytes2var(serialized)
+func unserialize_input(serialized: PackedByteArray) -> Dictionary:
+	return serialized.decode_var(0)
 
-func serialize_message(msg: Dictionary) -> PoolByteArray:
+func serialize_message(msg: Dictionary) -> PackedByteArray:
 	var buffer := StreamPeerBuffer.new()
 	buffer.resize(DEFAULT_MESSAGE_BUFFER_SIZE)
 

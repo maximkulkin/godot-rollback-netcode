@@ -17,7 +17,7 @@ func send_remote_start(peer_id: int) -> void:
 func send_remote_stop(peer_id: int) -> void:
 	pass
 
-func send_input_tick(peer_id: int, msg: PoolByteArray) -> void:
+func send_input_tick(peer_id: int, msg: PackedByteArray) -> void:
 	pass
 
 func is_network_host() -> bool:

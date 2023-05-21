@@ -78,7 +78,7 @@ func _on_AddLogButton_pressed() -> void:
 	file_dialog.show_modal()
 	file_dialog.invalidate()
 
-func _on_FileDialog_files_selected(paths: PoolStringArray) -> void:
+func _on_FileDialog_files_selected(paths: PackedStringArray) -> void:
 	if paths.size() > 0:
 		var already_loading: bool = (_files_to_load.size() > 0) or log_data.is_loading()
 		for path in paths:
