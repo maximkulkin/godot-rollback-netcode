@@ -270,7 +270,7 @@ func _ready() -> void:
 	_ping_timer.wait_time = ping_frequency
 	_ping_timer.autostart = true
 	_ping_timer.one_shot = false
-	_ping_timer.pause_mode = Node.PAUSE_MODE_PROCESS
+	_ping_timer.process_mode = Node.PROCESS_MODE_ALWAYS
 	_ping_timer.connect("timeout", _on_ping_timer_timeout)
 	add_child(_ping_timer)
 	
