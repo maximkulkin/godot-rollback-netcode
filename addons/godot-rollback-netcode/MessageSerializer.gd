@@ -4,7 +4,7 @@ static func is_type(obj: Object):
 	return Utils.has_interop_method(obj, "serialize_input") \
 		and Utils.has_interop_method(obj, "serialize_message") \
 		and Utils.has_interop_method(obj, "unserialize_input") \
-		and Utils.has_interop_method(obj, "unserialize_message") \
+		and Utils.has_interop_method(obj, "unserialize_message")
 
 const DEFAULT_MESSAGE_BUFFER_SIZE = 1280
 
