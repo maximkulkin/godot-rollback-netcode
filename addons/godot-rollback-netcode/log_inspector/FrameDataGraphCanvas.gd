@@ -80,7 +80,7 @@ func _ready() -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			set_cursor_time(int(start_time + event.position.x))
 
 func _draw_peer(peer_id: int, peer_rect: Rect2, draw_data: Dictionary) -> void:
