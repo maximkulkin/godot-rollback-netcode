@@ -42,12 +42,12 @@ func refresh_from_log_data() -> void:
 
 func set_replay_server(_replay_server: ReplayServer) -> void:
 	if replay_server != null:
-		replay_server.disconnect("game_disconnected", self, "_on_replay_server_game_disconnected")
+		replay_server.disconnect("game_disconnected", _on_replay_server_game_disconnected)
 	
 	replay_server = _replay_server
 	
 	if replay_server:
-		replay_server.connect("game_disconnected", self, "_on_replay_server_game_disconnected")
+		replay_server.connect("game_disconnected", _on_replay_server_game_disconnected)
 
 func _on_replay_server_game_disconnected() -> void:
 	replay_frame = -1

@@ -15,14 +15,14 @@ const LOG_FILE_DIRECTORY = 'user://detailed_logs'
 var logging_enabled := true
 
 func _ready() -> void:
-	get_tree().connect("network_peer_connected", self, "_on_network_peer_connected")
-	get_tree().connect("network_peer_disconnected", self, "_on_network_peer_disconnected")
-	get_tree().connect("server_disconnected", self, "_on_server_disconnected")
-	SyncManager.connect("sync_started", self, "_on_SyncManager_sync_started")
-	SyncManager.connect("sync_stopped", self, "_on_SyncManager_sync_stopped")
-	SyncManager.connect("sync_lost", self, "_on_SyncManager_sync_lost")
-	SyncManager.connect("sync_regained", self, "_on_SyncManager_sync_regained")
-	SyncManager.connect("sync_error", self, "_on_SyncManager_sync_error")
+	get_tree().connect("network_peer_connected", _on_network_peer_connected)
+	get_tree().connect("network_peer_disconnected", _on_network_peer_disconnected)
+	get_tree().connect("server_disconnected", _on_server_disconnected)
+	SyncManager.connect("sync_started", _on_SyncManager_sync_started)
+	SyncManager.connect("sync_stopped", _on_SyncManager_sync_stopped)
+	SyncManager.connect("sync_lost", _on_SyncManager_sync_lost)
+	SyncManager.connect("sync_regained", _on_SyncManager_sync_regained)
+	SyncManager.connect("sync_error", _on_SyncManager_sync_error)
 	
 	var cmdline_args = OS.get_cmdline_args()
 	if "server" in cmdline_args:

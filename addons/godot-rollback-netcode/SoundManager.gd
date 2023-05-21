@@ -13,8 +13,8 @@ func _ready() -> void:
 
 func setup_sound_manager(_sync_manager) -> void:
 	SyncManager = _sync_manager
-	SyncManager.connect("tick_retired", self, "_on_SyncManager_tick_retired")
-	SyncManager.connect("sync_stopped", self, "_on_SyncManager_sync_stopped")
+	SyncManager.connect("tick_retired", _on_SyncManager_tick_retired)
+	SyncManager.connect("sync_stopped", _on_SyncManager_sync_stopped)
 
 func play_sound(identifier: String, sound: AudioStream, info: Dictionary = {}) -> void:
 	if SyncManager.is_respawning():
@@ -44,7 +44,7 @@ func play_sound(identifier: String, sound: AudioStream, info: Dictionary = {}) -
 	
 	node.play()
 	
-	node.connect("finished", self, "_on_audio_finished", [node])
+	node.connect("finished", _on_audio_finished.bind(node))
 
 func _on_audio_finished(node: Node) -> void:
 	remove_child(node)

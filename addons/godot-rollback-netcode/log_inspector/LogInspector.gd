@@ -34,10 +34,10 @@ func _ready() -> void:
 	state_input_viewer.set_log_data(log_data)
 	frame_viewer.set_log_data(log_data)
 	
-	log_data.connect("load_error", self, "_on_log_data_load_error")
-	log_data.connect("load_progress", self, "_on_log_data_load_progress")
-	log_data.connect("load_finished", self, "_on_log_data_load_finished")
-	log_data.connect("data_updated", self, "refresh_from_log_data")
+	log_data.connect("load_error", _on_log_data_load_error)
+	log_data.connect("load_progress", _on_log_data_load_progress)
+	log_data.connect("load_finished", _on_log_data_load_finished)
+	log_data.connect("data_updated", refresh_from_log_data)
 	
 	state_input_viewer.set_replay_server(replay_server)
 	frame_viewer.set_replay_server(replay_server)

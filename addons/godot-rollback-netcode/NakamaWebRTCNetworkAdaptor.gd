@@ -31,17 +31,17 @@ var _skipped_tick_count := 0
 
 func attach_network_adaptor(sync_manager) -> void:
 	if OnlineMatch:
-		OnlineMatch.connect("webrtc_peer_added", self, '_on_OnlineMatch_webrtc_peer_added')
-		OnlineMatch.connect("webrtc_peer_removed", self, '_on_OnlineMatch_webrtc_peer_removed')
-		OnlineMatch.connect("disconnected", self, '_on_OnlineMatch_disconnected')
+		OnlineMatch.connect("webrtc_peer_added", _on_OnlineMatch_webrtc_peer_added)
+		OnlineMatch.connect("webrtc_peer_removed", _on_OnlineMatch_webrtc_peer_removed)
+		OnlineMatch.connect("disconnected", _on_OnlineMatch_disconnected)
 	else:
 		push_error("Can't find OnlineMatch singleton that the NakamaWebRTCNetworkAdaptor depends on!")
 
 func detach_network_adaptor(sync_manager) -> void:
 	if OnlineMatch:
-		OnlineMatch.disconnect("webrtc_peer_added", self, '_on_OnlineMatch_webrtc_peer_added')
-		OnlineMatch.disconnect("webrtc_peer_removed", self, '_on_OnlineMatch_webrtc_peer_removed')
-		OnlineMatch.disconnect("disconnected", self, '_on_OnlineMatch_disconnected')
+		OnlineMatch.disconnect("webrtc_peer_added", _on_OnlineMatch_webrtc_peer_added)
+		OnlineMatch.disconnect("webrtc_peer_removed", _on_OnlineMatch_webrtc_peer_removed)
+		OnlineMatch.disconnect("disconnected", _on_OnlineMatch_disconnected)
 
 func start_network_adaptor(sync_manager) -> void:
 	_last_messages.clear()

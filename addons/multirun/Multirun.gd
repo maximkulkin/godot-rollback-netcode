@@ -63,7 +63,7 @@ func _add_tooblar_button(action:String, icon_normal, icon_pressed):
 	var b = TextureButton.new();
 	b.texture_normal = icon_normal
 	b.texture_pressed = icon_pressed
-	b.connect("pressed", self, action)
+	b.connect("pressed", action)
 	panel.add_child(b)
 	add_control_to_container(CONTAINER_TOOLBAR, panel)
 	return panel

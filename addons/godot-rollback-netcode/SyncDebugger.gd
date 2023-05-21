@@ -12,13 +12,13 @@ var _debug_pressed: bool = false
 var print_previous_state := false
 
 func _ready() -> void:
-	SyncManager.connect("rollback_flagged", self, "_on_SyncManager_rollback_flagged")
-	SyncManager.connect("prediction_missed", self, "_on_SyncManager_prediction_missed")
-	SyncManager.connect("skip_ticks_flagged", self, "_on_SyncManager_skip_ticks_flagged")
-	SyncManager.connect("remote_state_mismatch", self, "_on_SyncManager_remote_state_mismatch")
-	SyncManager.connect("peer_pinged_back", self, "_on_SyncManager_peer_pinged_back")
-	SyncManager.connect("state_loaded", self, "_on_SyncManager_state_loaded")
-	SyncManager.connect("tick_finished", self, "_on_SyncManager_tick_finished")
+	SyncManager.connect("rollback_flagged", _on_SyncManager_rollback_flagged)
+	SyncManager.connect("prediction_missed", _on_SyncManager_prediction_missed)
+	SyncManager.connect("skip_ticks_flagged", _on_SyncManager_skip_ticks_flagged)
+	SyncManager.connect("remote_state_mismatch", _on_SyncManager_remote_state_mismatch)
+	SyncManager.connect("peer_pinged_back", _on_SyncManager_peer_pinged_back)
+	SyncManager.connect("state_loaded", _on_SyncManager_state_loaded)
+	SyncManager.connect("tick_finished", _on_SyncManager_tick_finished)
 
 func create_debug_overlay(overlay_instance = null) -> void:
 	if _debug_overlay != null:

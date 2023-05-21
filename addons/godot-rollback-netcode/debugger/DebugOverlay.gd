@@ -3,7 +3,7 @@ extends HBoxContainer
 const PeerStatus = preload("res://addons/godot-rollback-netcode/debugger/PeerStatus.tscn")
 
 func _ready() -> void:
-	SyncManager.connect("peer_removed", self, "_on_SyncManager_peer_removed")
+	SyncManager.connect("peer_removed", _on_SyncManager_peer_removed)
 
 func _on_SyncManager_peer_removed(peer_id) -> void:
 	var peer_id_str = str(peer_id)

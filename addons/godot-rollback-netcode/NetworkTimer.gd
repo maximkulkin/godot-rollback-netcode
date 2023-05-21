@@ -14,7 +14,7 @@ signal timeout ()
 
 func _ready() -> void:
 	add_to_group('network_sync')
-	SyncManager.connect("sync_stopped", self, "_on_SyncManager_sync_stopped")
+	SyncManager.connect("sync_stopped", _on_SyncManager_sync_stopped)
 	if autostart:
 		start()
 
