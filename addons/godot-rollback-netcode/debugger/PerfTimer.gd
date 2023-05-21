@@ -1,5 +1,3 @@
-extends Reference
-
 var start_timings := {}
 var timings := {}
 

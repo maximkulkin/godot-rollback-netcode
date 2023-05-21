@@ -1,5 +1,3 @@
-extends Reference
-
 const JSON_INDENT = "    "
 
 enum MismatchType {

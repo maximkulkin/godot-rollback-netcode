@@ -1,5 +1,3 @@
-extends Reference
-
 const Utils = preload("res://addons/godot-rollback-netcode/Utils.gd")
 
 static func is_type(obj: Object):

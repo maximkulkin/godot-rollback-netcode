@@ -1,5 +1,3 @@
-extends Reference
-
 enum LogType {
 	HEADER,
 	FRAME,

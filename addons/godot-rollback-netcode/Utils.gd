@@ -1,5 +1,3 @@
-extends Reference
-
 static func _snake2pascal(string: String) -> String:
 	var pascal_string := '';
 	var capitalizeNext = true;

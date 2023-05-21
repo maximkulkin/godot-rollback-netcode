@@ -9,7 +9,7 @@ const Logger = preload("res://addons/godot-rollback-netcode/Logger.gd")
 const DebugStateComparer = preload("res://addons/godot-rollback-netcode/DebugStateComparer.gd")
 const Utils = preload("res://addons/godot-rollback-netcode/Utils.gd")
 
-class Peer extends Reference:
+class Peer:
 	var peer_id: int
 	
 	var rtt: int

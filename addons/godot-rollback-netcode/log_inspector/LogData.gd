@@ -1,5 +1,4 @@
 @tool
-extends Reference
 
 const Logger = preload("res://addons/godot-rollback-netcode/Logger.gd")
 
