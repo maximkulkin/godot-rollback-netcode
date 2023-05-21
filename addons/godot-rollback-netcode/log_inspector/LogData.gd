@@ -136,7 +136,7 @@ func load_log_file(path: String) -> void:
 	_loader_thread = Thread.new()
 	
 	_is_loading = true
-	_loader_thread.start(self, "_loader_thread_function", [file, path])
+	_loader_thread.start(func(): _loader_thread_function(file, path))
 
 func _set_loading(_value: bool) -> void:
 	_loader_mutex.lock()
