@@ -93,7 +93,7 @@ func _on_ShowRollbackTicks_pressed() -> void:
 
 func _on_MaxRollbackTicks_text_changed(new_text: String) -> void:
 	var value = max_rollback_ticks_field.text
-	if value.is_valid_integer():
+	if value.is_valid_int():
 		var value_int = value.to_int()
 		if value_int > 0:
 			data_graph.canvas.max_rollback_ticks = value_int
