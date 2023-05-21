@@ -89,7 +89,7 @@ func _on_SyncManager_sync_started() -> void:
 		if not dir.dir_exists(LOG_FILE_DIRECTORY):
 			dir.make_dir(LOG_FILE_DIRECTORY)
 		
-		var datetime = OS.get_datetime(true)
+		var datetime = Time.get_datetime_dict_from_system(true)
 		var log_file_name = "%04d%02d%02d-%02d%02d%02d-peer-%d.log" % [
 			datetime['year'],
 			datetime['month'],
