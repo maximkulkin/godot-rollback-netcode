@@ -27,7 +27,7 @@ var _writer_thread: Thread
 var _writer_thread_semaphore: Semaphore
 var _writer_thread_mutex: Mutex
 var _write_queue := []
-var _log_file: File
+var _log_file: FileAccess
 var _started := false
 
 var SyncManager
@@ -39,15 +39,15 @@ func _init(_sync_manager) -> void:
 	_writer_thread_mutex = Mutex.new()
 	_writer_thread_semaphore = Semaphore.new()
 	_writer_thread = Thread.new()
-	_log_file = File.new()
+	_log_file = null
 
 func start(log_file_name: String, peer_id: int, match_info: Dictionary = {}) -> int:
 	if not _started:
 		var err: int
 
-		err = _log_file.open_compressed(log_file_name, File.WRITE, File.COMPRESSION_FASTLZ)
-		if err != OK:
-			return err
+		_log_file = FileAccess.open_compressed(log_file_name, FileAccess.WRITE, FileAccess.COMPRESSION_FASTLZ)
+		if !_log_file:
+			return FileAccess.get_open_error()
 		
 		var header := {
 			log_type = LogType.HEADER,
