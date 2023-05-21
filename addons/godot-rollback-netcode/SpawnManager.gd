@@ -54,7 +54,7 @@ static func _node_name_sort_callback(a: Node, b: Node) -> bool:
 
 func _alphabetize_children(parent: Node) -> void:
 	var children = parent.get_children()
-	children.sort_custom(self, '_node_name_sort_callback')
+	children.sort_custom(_node_name_sort_callback)
 	for index in range(children.size()):
 		var child = children[index]
 		parent.move_child(child, index)
