@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorPlugin
 
 const LogInspector = preload("res://addons/godot-rollback-netcode/log_inspector/LogInspector.tscn")

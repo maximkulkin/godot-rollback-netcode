@@ -1,4 +1,4 @@
-tool
+@tool
 extends HBoxContainer
 
 @onready var peer_label = $PeerLabel

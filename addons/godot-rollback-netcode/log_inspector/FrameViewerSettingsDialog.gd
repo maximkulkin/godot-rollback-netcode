@@ -1,4 +1,4 @@
-tool
+@tool
 extends WindowDialog
 
 const LogData = preload("res://addons/godot-rollback-netcode/log_inspector/LogData.gd")

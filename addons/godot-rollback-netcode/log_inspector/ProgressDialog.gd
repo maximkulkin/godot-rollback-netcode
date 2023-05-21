@@ -1,4 +1,4 @@
-tool
+@tool
 extends PopupDialog
 
 @onready var label = $MarginContainer/VBoxContainer/Label

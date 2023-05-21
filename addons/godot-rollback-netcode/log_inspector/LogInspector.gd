@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 const LogData = preload("res://addons/godot-rollback-netcode/log_inspector/LogData.gd")

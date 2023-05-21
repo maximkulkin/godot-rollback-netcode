@@ -1,4 +1,4 @@
-tool
+@tool
 extends Tree
 
 const Logger = preload("res://addons/godot-rollback-netcode/Logger.gd")

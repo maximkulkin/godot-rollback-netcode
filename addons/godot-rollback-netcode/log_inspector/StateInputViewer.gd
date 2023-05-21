@@ -1,4 +1,4 @@
-tool
+@tool
 extends VBoxContainer
 
 const LogData = preload("res://addons/godot-rollback-netcode/log_inspector/LogData.gd")
