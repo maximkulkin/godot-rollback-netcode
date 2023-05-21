@@ -104,7 +104,7 @@ func _find_mismatches_recursive(local_state: Dictionary, remote_state: Dictionar
 
 static func _get_diff_path_string(path: Array, key) -> String:
 	if path.size() > 0:
-		return PoolStringArray(path).join(" -> ") + " -> " + str(key)
+		return " -> ".join(path) + " -> " + str(key)
 	return str(key)
 
 static func _extend_diff_path(path: Array, key) -> Array:

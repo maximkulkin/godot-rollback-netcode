@@ -191,7 +191,7 @@ func _create_nested_item(name_parts: Array, root: TreeItem, items: Dictionary) -
 	if name_parts.size() == 0:
 		return null
 	
-	var name = PoolStringArray(name_parts).join('.')
+	var name = ".".join(name_parts)
 	if items.has(name):
 		return items[name]
 	
