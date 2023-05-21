@@ -8,7 +8,7 @@ enum PlayerInputKey {
 
 func _save_state() -> Dictionary:
 	return {
-		position = position,
+		'position': position,
 	}
 
 func _load_state(state: Dictionary) -> void:
