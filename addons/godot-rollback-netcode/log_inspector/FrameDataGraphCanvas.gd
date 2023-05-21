@@ -4,8 +4,8 @@ extends Control
 const Logger = preload("res://addons/godot-rollback-netcode/Logger.gd")
 const LogData = preload("res://addons/godot-rollback-netcode/log_inspector/LogData.gd")
 
-var start_time := 0 setget set_start_time
-var cursor_time := -1 setget set_cursor_time
+var start_time := 0: set = set_start_time
+var cursor_time := -1: set = set_cursor_time
 
 var show_network_arrows := true
 var network_arrow_peers := []

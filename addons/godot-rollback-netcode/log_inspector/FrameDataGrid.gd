@@ -5,7 +5,7 @@ const Logger = preload("res://addons/godot-rollback-netcode/Logger.gd")
 const LogData = preload("res://addons/godot-rollback-netcode/log_inspector/LogData.gd")
 
 var log_data: LogData
-var cursor_time: int = -1 setget set_cursor_time
+var cursor_time: int = -1: set = set_cursor_time
 
 enum PropertyType {
 	BASIC,

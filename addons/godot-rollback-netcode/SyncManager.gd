@@ -139,22 +139,22 @@ const DEFAULT_NETWORK_ADAPTOR_PATH := "res://addons/godot-rollback-netcode/RPCNe
 const DEFAULT_MESSAGE_SERIALIZER_PATH := "res://addons/godot-rollback-netcode/MessageSerializer.gd"
 const DEFAULT_HASH_SERIALIZER_PATH := "res://addons/godot-rollback-netcode/HashSerializer.gd"
 
-var network_adaptor: Object setget set_network_adaptor
-var message_serializer: Object setget set_message_serializer
-var hash_serializer: Object setget set_hash_serializer
+var network_adaptor: Object: set = set_network_adaptor
+var message_serializer: Object: set = set_message_serializer
+var hash_serializer: Object: set = set_hash_serializer
 
 var peers := {}
 var input_buffer := []
 var state_buffer := []
 var state_hashes := []
 
-var mechanized := false setget set_mechanized
+var mechanized := false: set = set_mechanized
 var mechanized_input_received := {}
 var mechanized_rollback_ticks := 0
 
 var max_buffer_size := 20
 var ticks_to_calculate_advantage := 60
-var input_delay := 2 setget set_input_delay
+var input_delay := 2: set = set_input_delay
 var max_input_frames_per_message := 5
 var max_messages_at_once := 2
 var max_ticks_to_regain_sync := 300
@@ -172,15 +172,15 @@ var debug_check_message_serializer_roundtrip := false
 var debug_check_local_state_consistency := false
 
 # In seconds, because we don't want it to be dependent on the network tick.
-var ping_frequency := 1.0 setget set_ping_frequency
+var ping_frequency := 1.0: set = set_ping_frequency
 
-var input_tick: int = 0 setget _set_readonly_variable
-var current_tick: int = 0 setget _set_readonly_variable
-var skip_ticks: int = 0 setget _set_readonly_variable
-var rollback_ticks: int = 0 setget _set_readonly_variable
-var requested_input_complete_tick: int = 0 setget _set_readonly_variable
-var started := false setget _set_readonly_variable
-var tick_time: float setget _set_readonly_variable
+var input_tick: int = 0: set = _set_readonly_variable
+var current_tick: int = 0: set = _set_readonly_variable
+var skip_ticks: int = 0: set = _set_readonly_variable
+var rollback_ticks: int = 0: set = _set_readonly_variable
+var requested_input_complete_tick: int = 0: set = _set_readonly_variable
+var started := false: set = _set_readonly_variable
+var tick_time: float: set = _set_readonly_variable
 
 var _host_starting := false
 var _ping_timer: Timer
