@@ -61,9 +61,9 @@ func serialize_other(value):
 			'y': {x = value.y.x, y = value.y.y},
 			'origin': {x = value.origin.x, y = value.origin.y},
 		}
-	elif value is Transform:
+	elif value is Transform3D:
 		return {
-			'_': 'Transform',
+			'_': 'Transform3D',
 			'x': {x = value.basis.x.x, y = value.basis.x.y, z = value.basis.x.z},
 			'y': {x = value.basis.y.x, y = value.basis.y.y, z = value.basis.y.z},
 			'z': {x = value.basis.z.x, y = value.basis.z.y, z = value.basis.z.z},
@@ -79,7 +79,7 @@ func unserialize(value):
 		
 		if value['_'] == 'resource':
 			return unserialize_resource(value)
-		elif value['_'] in ['Vector2', 'Vector3', 'Transform2D', 'Transform']:
+		elif value['_'] in ['Vector2', 'Vector3', 'Transform2D', 'Transform3D']:
 			return unserialize_other(value)
 		
 		return unserialize_object(value)
@@ -119,8 +119,8 @@ func unserialize_other(value: Dictionary):
 				Vector2(value.y.x, value.y.y),
 				Vector2(value.origin.x, value.origin.y)
 			)
-		'Transform':
-			return Transform(
+		'Transform3D':
+			return Transform3D(
 				Vector3(value.x.x, value.x.y, value.x.z),
 				Vector3(value.y.x, value.y.y, value.y.z),
 				Vector3(value.z.x, value.z.y, value.z.z),
