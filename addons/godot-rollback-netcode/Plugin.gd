@@ -15,7 +15,7 @@ func _enter_tree() -> void:
 	log_inspector = LogInspector.instantiate()
 	get_editor_interface().get_base_control().add_child(log_inspector)
 	log_inspector.set_editor_interface(get_editor_interface())
-	add_tool_menu_item("Log inspector...", self, "open_log_inspector")
+	add_tool_menu_item("Log inspector...", open_log_inspector)
 	
 	if not ProjectSettings.has_setting("input/sync_debug"):
 		var sync_debug = InputEventKey.new()
@@ -32,7 +32,7 @@ func _enter_tree() -> void:
 		# ProjectSettings.
 		get_tree().root.get_child(0).propagate_notification(EditorSettings.NOTIFICATION_EDITOR_SETTINGS_CHANGED)
 
-func open_log_inspector(ud) -> void:
+func open_log_inspector() -> void:
 	log_inspector.popup_centered_ratio()
 
 func _exit_tree() -> void:
