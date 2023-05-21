@@ -6,7 +6,7 @@
 [ext_resource path="res://addons/godot-rollback-netcode/log_inspector/FrameViewer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/godot-rollback-netcode/log_inspector/ReplayServer.gd" type="Script" id=5]
 
-[node name="LogInspector" type="WindowDialog"]
+[node name="LogInspector" type="Window"]
 margin_right = 981.0
 margin_bottom = 653.0
 window_title = "Rollback log inspector"
@@ -231,7 +231,7 @@ visible = false
 [node name="ReplayServer" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[connection signal="about_to_show" from="." to="." method="_on_LogInspector_about_to_show"]
+[connection signal="about_to_popup" from="." to="." method="_on_LogInspector_about_to_popup"]
 [connection signal="files_selected" from="FileDialog" to="." method="_on_FileDialog_files_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LoadToolbar/ClearButton" to="." method="_on_ClearButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LoadToolbar/AddLogButton" to="." method="_on_AddLogButton_pressed"]

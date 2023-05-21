@@ -1,5 +1,5 @@
 @tool
-extends WindowDialog
+extends Window
 
 const LogData = preload("res://addons/godot-rollback-netcode/log_inspector/LogData.gd")
 const DataGraph = preload("res://addons/godot-rollback-netcode/log_inspector/FrameDataGraph.gd")

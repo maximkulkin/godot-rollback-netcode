@@ -1,5 +1,5 @@
 @tool
-extends PopupDialog
+extends Popup
 
 @onready var label = $MarginContainer/VBoxContainer/Label
 @onready var progress_bar = $MarginContainer/VBoxContainer/ProgressBar

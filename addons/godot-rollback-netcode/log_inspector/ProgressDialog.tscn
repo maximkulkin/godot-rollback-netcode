@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/godot-rollback-netcode/log_inspector/ProgressDialog.gd" type="Script" id=1]
 
-[node name="ProgressDialog" type="PopupDialog"]
+[node name="ProgressDialog" type="Popup"]
 margin_right = 720.0
 margin_bottom = 75.0
 popup_exclusive = true
