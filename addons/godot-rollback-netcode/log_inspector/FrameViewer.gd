@@ -213,7 +213,7 @@ func _send_replay_frame_data(frame_data: LogData.FrameData) -> void:
 	
 	replay_server.send_message(msg)
 
-func _unhandled_key_input(event: InputEventKey) -> void:
+func _unhandled_key_input(event: InputEvent) -> void:
 	if event.pressed:
 		if event.keycode == KEY_PAGEUP:
 			jump_to_next_frame()
