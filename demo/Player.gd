@@ -1,4 +1,4 @@
-extends Sprite
+extends Sprite2D
 
 @export var input_prefix: String = "player1_"
 
