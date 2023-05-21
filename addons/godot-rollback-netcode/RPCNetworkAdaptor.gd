@@ -37,7 +37,7 @@ func is_network_host() -> bool:
 	return get_tree().is_network_server()
 
 func is_network_master_for_node(node: Node) -> bool:
-	return node.is_network_master()
+	return node.is_multiplayer_authority()
 
 func get_network_unique_id() -> int:
 	return get_tree().get_network_unique_id()

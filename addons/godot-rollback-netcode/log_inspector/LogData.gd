@@ -155,7 +155,7 @@ func _thread_print(msg) -> void:
 
 func _loader_thread_function(file: FileAccess, path: String) -> void:
 	var header
-	var file_size = file.get_len()
+	var file_size = file.get_length()
 	
 	while not file.eof_reached():
 		var data = file.get_var()

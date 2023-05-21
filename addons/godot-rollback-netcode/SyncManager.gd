@@ -543,7 +543,7 @@ func _call_network_process(input_frame: InputBufferFrame) -> void:
 		var node = nodes[i]
 		if node.is_inside_tree() and not node.is_queued_for_deletion():
 			if Utils.has_interop_method(node, '_network_preprocess'):
-				var player_input = input_frame.get_player_input(node.get_network_master())
+				var player_input = input_frame.get_player_input(node.get_multiplayer_authority())
 				node._network_preprocess(player_input.get(str(node.get_path()), {}))
 			if Utils.has_interop_method(node, '_network_process'):
 				process_nodes.append(node)
@@ -553,13 +553,13 @@ func _call_network_process(input_frame: InputBufferFrame) -> void:
 	# Call _network_process().
 	for node in process_nodes:
 		if node.is_inside_tree() and not node.is_queued_for_deletion():
-			var player_input = input_frame.get_player_input(node.get_network_master())
+			var player_input = input_frame.get_player_input(node.get_multiplayer_authority())
 			Utils.try_call_interop_method(node, '_network_process', [player_input.get(str(node.get_path()), {})])
 		
 	# Call _network_postprocess().
 	for node in postprocess_nodes:
 		if node.is_inside_tree() and not node.is_queued_for_deletion():
-			var player_input = input_frame.get_player_input(node.get_network_master())
+			var player_input = input_frame.get_player_input(node.get_multiplayer_authority())
 			Utils.try_call_interop_method(node, '_network_postprocess', [player_input.get(str(node.get_path()), {})])
 	
 func _call_save_state() -> Dictionary:
@@ -664,7 +664,7 @@ func _predict_missing_input(input_frame: InputBufferFrame, previous_frame: Input
 				else current_tick - peer.last_remote_input_tick_received
 		var nodes: Array = get_tree().get_nodes_in_group('network_sync')
 		for node in nodes:
-			var node_master: int = node.get_network_master()
+			var node_master: int = node.get_multiplayer_authority()
 			if not node_master in missing_peers:
 				continue
 			
@@ -817,13 +817,13 @@ func get_latest_input_from_peer(peer_id: int) -> Dictionary:
 	return {}
 
 func get_latest_input_for_node(node: Node) -> Dictionary:
-	return get_latest_input_from_peer_for_path(node.get_network_master(), str(node.get_path()))
+	return get_latest_input_from_peer_for_path(node.get_multiplayer_authority(), str(node.get_path()))
 
 func get_latest_input_from_peer_for_path(peer_id: int, path: String) -> Dictionary:
 	return get_latest_input_from_peer(peer_id).get(path, {})
 
 func get_current_input_for_node(node: Node) -> Dictionary:
-	return get_current_input_from_peer_for_path(node.get_network_master(), str(node.get_path()))
+	return get_current_input_from_peer_for_path(node.get_multiplayer_authority(), str(node.get_path()))
 
 func get_current_input_from_peer_for_path(peer_id: int, path: String) -> Dictionary:
 	var input_frame = get_input_frame(current_tick)

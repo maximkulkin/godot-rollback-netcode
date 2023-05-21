@@ -61,11 +61,11 @@ func _on_ClientButton_pressed() -> void:
 	message_label.text = "Connecting..."
 
 func _on_network_peer_connected(peer_id: int):
-	$ServerPlayer.set_network_master(1)
+	$ServerPlayer.set_multiplayer_authority(1)
 	if get_tree().is_network_server():
-		$ClientPlayer.set_network_master(peer_id)
+		$ClientPlayer.set_multiplayer_authority(peer_id)
 	else:
-		$ClientPlayer.set_network_master(get_tree().get_network_unique_id())
+		$ClientPlayer.set_multiplayer_authority(multiplayer.get_unique_id())
 	
 	SyncManager.add_peer(peer_id)
 	if get_tree().is_network_server():
@@ -135,5 +135,5 @@ func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictio
 		client_peer_id = peer_ids[0]
 	else:
 		client_peer_id = my_peer_id
-	$ClientPlayer.set_network_master(client_peer_id)
+	$ClientPlayer.set_multiplayer_authority(client_peer_id)
 
