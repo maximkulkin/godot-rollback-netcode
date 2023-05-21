@@ -115,7 +115,7 @@ func send_input_tick(peer_id: int, msg: PackedByteArray) -> void:
 		var last_messages_for_peer = _last_messages[peer_id]
 		
 		# Clear out expired duplicate message records.
-		var current_time = OS.get_ticks_msec()
+		var current_time = Time.get_ticks_msec()
 		while last_messages_for_peer.size() > 0:
 			if current_time - last_messages_for_peer[0].time >= max_duplicate_msecs:
 				#print ("[%s] Retiring duplicate from duplicate message history" % [SyncManager.current_tick])

@@ -140,7 +140,7 @@ func _prop_to_string(data: Dictionary, prop_name: String, prop_def = null) -> St
 		
 		PropertyType.TIME:
 			if value != null:
-				var datetime = OS.get_datetime_from_unix_time(value / 1000)
+				var datetime = Time.get_datetime_dict_from_unix_time(value / 1000)
 				value = "%04d-%02d-%02d %02d:%02d:%02d" % [
 					datetime['year'],
 					datetime['month'],
