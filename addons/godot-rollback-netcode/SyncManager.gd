@@ -455,7 +455,7 @@ func start() -> void:
 		
 		# Wait for half the highest RTT to start locally.
 		print ("Delaying host start by %sms" % (highest_rtt / 2))
-		yield(get_tree().create_timer(highest_rtt / 2000.0), 'timeout')
+		await get_tree().create_timer(highest_rtt / 2000.0).timeout
 		
 		_on_received_remote_start()
 		_host_starting = false
@@ -1471,7 +1471,7 @@ func is_respawning() -> bool:
 
 func set_default_sound_bus(bus: String) -> void:
 	if _sound_manager == null:
-		yield(self, "ready")
+		await ready
 	_sound_manager.default_bus = bus
 
 func play_sound(identifier: String, sound: AudioStream, info: Dictionary = {}) -> void:
