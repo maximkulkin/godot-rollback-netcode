@@ -46,14 +46,14 @@ func _on_LocalButton_pressed() -> void:
 	SyncManager.start()
 
 func _on_ServerButton_pressed() -> void:
-	var peer = NetworkedMultiplayerENet.new()
+	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(int(port_field.text), 1)
 	multiplayer.multiplayer_peer = peer
 	connection_panel.visible = false
 	main_menu.visible = false
 
 func _on_ClientButton_pressed() -> void:
-	var peer = NetworkedMultiplayerENet.new()
+	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(host_field.text, int(port_field.text))
 	multiplayer.multiplayer_peer = peer
 	connection_panel.visible = false
@@ -122,7 +122,7 @@ func _on_SyncManager_sync_error(msg: String) -> void:
 func _on_ResetButton_pressed() -> void:
 	SyncManager.stop()
 	SyncManager.clear_peers()
-	var peer = get_tree().network_peer
+	var peer = multiplayer.network_peer
 	if peer:
 		peer.close_connection()
 	get_tree().reload_current_scene()
