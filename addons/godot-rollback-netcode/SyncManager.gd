@@ -886,7 +886,7 @@ func _get_input_messages_from_send_queue_for_peer(peer: Peer) -> Array:
 	var old_messages = int(floor(max_messages_at_once / 2.0))
 	
 	return _get_input_messages_from_send_queue_in_range(last_index - (new_messages * max_input_frames_per_message) + 1, last_index, true) + \
-		   _get_input_messages_from_send_queue_in_range(first_index, first_index + (old_messages * max_input_frames_per_message) - 1)
+		_get_input_messages_from_send_queue_in_range(first_index, first_index + (old_messages * max_input_frames_per_message) - 1)
 
 func _get_state_hashes_for_peer(peer: Peer) -> Dictionary:
 	var ret := {}
