@@ -54,18 +54,18 @@ func refresh_from_log_data() -> void:
 		if network_arrow_peers.size() < 2 and log_data.peer_ids.size() >= 2:
 			network_arrow_peers = [log_data.peer_ids[0], log_data.peer_ids[1]]
 	
-	update()
+	queue_redraw()
 
 func set_start_time(_start_time: int) -> void:
 	if start_time != _start_time:
 		start_time = _start_time
-		update()
+		queue_redraw()
 		emit_signal("start_time_changed", start_time)
 
 func set_cursor_time(_cursor_time: int) -> void:
 	if cursor_time != _cursor_time:
 		cursor_time = _cursor_time
-		update()
+		queue_redraw()
 		emit_signal("cursor_time_changed", cursor_time)
 		
 		var relative_cursor_time = cursor_time - start_time
