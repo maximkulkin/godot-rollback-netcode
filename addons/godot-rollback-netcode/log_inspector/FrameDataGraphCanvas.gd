@@ -31,7 +31,8 @@ const CURSOR_SCROLL_GAP := 100
 
 var log_data: LogData
 var _font: Font
-var _font_big: Font
+var _font_size: int = 16
+var _font_big_size: int = 32
 
 signal cursor_time_changed (cursor_time)
 signal start_time_changed (start_time)
@@ -75,13 +76,7 @@ func set_cursor_time(_cursor_time: int) -> void:
 			set_start_time(cursor_time - CURSOR_SCROLL_GAP)
 
 func _ready() -> void:
-	_font = DynamicFont.new()
-	_font.font_data = load("res://addons/godot-rollback-netcode/log_inspector/monogram_extended.ttf")
-	_font.size = 16
-	
-	_font_big = DynamicFont.new()
-	_font_big.font_data = load("res://addons/godot-rollback-netcode/log_inspector/monogram_extended.ttf")
-	_font_big.size = 32
+	_font = load("res://addons/godot-rollback-netcode/log_inspector/monogram_extended.ttf")
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -154,7 +149,7 @@ func _draw_peer(peer_id: int, peer_rect: Rect2, draw_data: Dictionary) -> void:
 						Logger.SkipReason.ADVANTAGE_ADJUSTMENT:
 							tick_letter = 'A'
 					if tick_letter != '':
-						tick_numbers_to_draw.append([_font_big, center_position - Vector2(5, 0), tick_letter, Color('f04dff')])
+						tick_numbers_to_draw.append([_font, center_position - Vector2(5, 0), tick_letter, Color('f04dff'), _font_big_size])
 			else:
 				frame_color = FRAME_TYPE_COLOR[frame.type]
 			
@@ -162,7 +157,7 @@ func _draw_peer(peer_id: int, peer_rect: Rect2, draw_data: Dictionary) -> void:
 			
 			if frame.type == Logger.FrameType.TICK and frame.data.has('tick') and not skipped:
 				var tick: int = frame.data['tick']
-				tick_numbers_to_draw.append([_font, center_position - Vector2(3, 0), str(tick), Color(1.0, 1.0, 1.0)])
+				tick_numbers_to_draw.append([_font, center_position - Vector2(3, 0), str(tick), Color(1.0, 1.0, 1.0), _font_size])
 				if frame.data.has('input_tick') and capture_network_arrow_positions:
 					var input_tick: int = frame.data['input_tick']
 					network_arrow_start_positions[input_tick] = center_position
@@ -255,7 +250,7 @@ func _draw() -> void:
 	
 	for peer_id in peer_rects:
 		var peer_rect: Rect2 = peer_rects[peer_id]
-		draw_string(_font, peer_rect.position + Vector2(0, PEER_GAP), "Peer %s" % peer_id, Color(1.0, 1.0, 1.0))
+		draw_string(_font, peer_rect.position + Vector2(0, PEER_GAP), "Peer %s" % peer_id, HORIZONTAL_ALIGNMENT_LEFT, -1, _font_size, Color(1.0, 1.0, 1.0))
 	
 	if cursor_time >= start_time and cursor_time <= start_time + size.x:
 		draw_line(
