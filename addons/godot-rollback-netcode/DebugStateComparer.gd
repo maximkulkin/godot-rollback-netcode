@@ -135,24 +135,24 @@ func print_mismatches() -> String:
 		match mismatch.type:
 			MismatchType.MISSING:
 				data.append(" => [MISSING] %s" % mismatch.path)
-				data.append(JSON.print(mismatch.local_state, JSON_INDENT))
+				data.append(JSON.stringify(mismatch.local_state, JSON_INDENT))
 				data.append('')
 			
 			MismatchType.EXTRA:
 				data.append(" => [EXTRA] %s" % mismatch.path)
-				data.append(JSON.print(mismatch.remote_state, JSON_INDENT))
+				data.append(JSON.stringify(mismatch.remote_state, JSON_INDENT))
 				data.append('')
 			
 			MismatchType.REORDER:
 				data.append(" => [REORDER] %s" % mismatch.path)
-				data.append("LOCAL:  %s" % JSON.print(mismatch.local_state, JSON_INDENT))
-				data.append("REMOTE: %s" % JSON.print(mismatch.remote_state, JSON_INDENT))
+				data.append("LOCAL:  %s" % JSON.stringify(mismatch.local_state, JSON_INDENT))
+				data.append("REMOTE: %s" % JSON.stringify(mismatch.remote_state, JSON_INDENT))
 				data.append('')
 			
 			MismatchType.DIFFERENCE:
 				data.append(" => [DIFF] %s" % mismatch.path)
-				data.append("LOCAL:  %s" % JSON.print(mismatch.local_state, JSON_INDENT))
-				data.append("REMOTE: %s" % JSON.print(mismatch.remote_state, JSON_INDENT))
+				data.append("LOCAL:  %s" % JSON.stringify(mismatch.local_state, JSON_INDENT))
+				data.append("REMOTE: %s" % JSON.stringify(mismatch.remote_state, JSON_INDENT))
 				data.append('')
 	
 	return data.join("\n")

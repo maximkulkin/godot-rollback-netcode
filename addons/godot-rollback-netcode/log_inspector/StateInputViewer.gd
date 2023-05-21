@@ -139,7 +139,7 @@ func _create_tree_from_mismatches(tree: Tree, data: Dictionary, mismatches: Dict
 						_create_tree_items_from_dictionary(tree, mismatch_item, _convert_array_to_dictionary(mismatch.local_state))
 					else:
 						var child = tree.create_item(mismatch_item)
-						child.set_text(1, JSON.print(mismatch.local_state, JSON_INDENT))
+						child.set_text(1, JSON.stringify(mismatch.local_state, JSON_INDENT))
 				
 				DebugStateComparer.MismatchType.EXTRA:
 					mismatch_item.set_text(0, "[EXTRA] %s" % mismatch.path)
@@ -150,7 +150,7 @@ func _create_tree_from_mismatches(tree: Tree, data: Dictionary, mismatches: Dict
 						_create_tree_items_from_dictionary(tree, mismatch_item, _convert_array_to_dictionary(mismatch.remote_state), 2)
 					else:
 						var child = tree.create_item(mismatch_item)
-						child.set_text(2, JSON.print(mismatch.remote_state, JSON_INDENT))
+						child.set_text(2, JSON.stringify(mismatch.remote_state, JSON_INDENT))
 				
 				DebugStateComparer.MismatchType.REORDER:
 					mismatch_item.set_text(0, "[REORDER] %s" % mismatch.path)
@@ -166,8 +166,8 @@ func _create_tree_from_mismatches(tree: Tree, data: Dictionary, mismatches: Dict
 					mismatch_item.set_text(0, "[DIFF] %s" % mismatch.path)
 					
 					var child = tree.create_item(mismatch_item)
-					child.set_text(1, JSON.print(mismatch.local_state, JSON_INDENT))
-					child.set_text(2, JSON.print(mismatch.remote_state, JSON_INDENT))
+					child.set_text(1, JSON.stringify(mismatch.local_state, JSON_INDENT))
+					child.set_text(2, JSON.stringify(mismatch.remote_state, JSON_INDENT))
 
 func _on_PreviousMismatchButton_pressed() -> void:
 	if log_data.is_loading():

@@ -40,7 +40,7 @@ func log2json(input_filename: String, output_filename: String) -> bool:
 	
 	while not infile.eof_reached():
 		var data = infile.get_var()
-		outfile.store_line(JSON.print(data))
+		outfile.store_line(JSON.stringify(data))
 	
 	infile.close()
 	outfile.close()
