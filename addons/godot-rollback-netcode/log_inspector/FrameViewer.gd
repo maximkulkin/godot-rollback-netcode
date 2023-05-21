@@ -215,13 +215,13 @@ func _send_replay_frame_data(frame_data: LogData.FrameData) -> void:
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.pressed:
-		if event.scancode == KEY_PAGEUP:
+		if event.keycode == KEY_PAGEUP:
 			jump_to_next_frame()
-		elif event.scancode == KEY_PAGEDOWN:
+		elif event.keycode == KEY_PAGEDOWN:
 			jump_to_previous_frame()
-		elif event.scancode == KEY_UP:
+		elif event.keycode == KEY_UP:
 			time_field.value += 1
-		elif event.scancode == KEY_DOWN:
+		elif event.keycode == KEY_DOWN:
 			time_field.value -= 1
 
 func _on_StartButton_pressed() -> void:

@@ -19,7 +19,7 @@ func _enter_tree() -> void:
 	
 	if not ProjectSettings.has_setting("input/sync_debug"):
 		var sync_debug = InputEventKey.new()
-		sync_debug.scancode = KEY_F11
+		sync_debug.keycode = KEY_F11
 		
 		ProjectSettings.set_setting("input/sync_debug", {
 			deadzone = 0.5,
