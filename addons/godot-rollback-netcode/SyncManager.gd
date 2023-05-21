@@ -487,7 +487,7 @@ func _reset() -> void:
 
 func _on_received_remote_start() -> void:
 	_reset()
-	tick_time = (1.0 / Engine.iterations_per_second)
+	tick_time = (1.0 / Engine.physics_ticks_per_second)
 	started = true
 	network_adaptor.start_network_adaptor(self)
 	_spawn_manager.reset()
