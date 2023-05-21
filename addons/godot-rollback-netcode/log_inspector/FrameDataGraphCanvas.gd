@@ -172,7 +172,7 @@ func _draw_peer(peer_id: int, peer_rect: Rect2, draw_data: Dictionary) -> void:
 					rollback_height = extended_peer_rect.size.y
 				var rollback_point = Vector2(center_position.x, frame_rect.position.y + frame_rect.size.y - rollback_height)
 				if last_rollback_point != null:
-					draw_line(last_rollback_point, rollback_point, ROLLBACK_LINE_COLOR, 2.0, true)
+					draw_line(last_rollback_point, rollback_point, ROLLBACK_LINE_COLOR, 2.0)
 				last_rollback_point = rollback_point
 				
 		# Move on to the next frame.
@@ -203,7 +203,7 @@ func _draw_network_arrows(start_positions: Dictionary, end_positions: Dictionary
 			start_position.y -= 15
 			end_position.y += 10
 		
-		draw_line(start_position, end_position, color, 2.0, true)
+		draw_line(start_position, end_position, color, 2.0)
 		
 		# Draw the arrow head.
 		var sqrt12 = sqrt(0.5)
