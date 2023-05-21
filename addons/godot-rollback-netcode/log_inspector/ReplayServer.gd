@@ -5,7 +5,7 @@ const LogData = preload("res://addons/godot-rollback-netcode/log_inspector/LogDa
 
 const GAME_ARGUMENTS_SETTING = 'network/rollback/log_inspector/replay_arguments'
 const GAME_PORT_SETTING = 'network/rollback/log_inspector/replay_port'
-const MAIN_RUN_ARGS_SETTING = 'editor/main_run_args'
+const MAIN_RUN_ARGS_SETTING = 'editor/run/main_run_args'
 
 var server: TCPServer
 var connection: StreamPeerTCP
