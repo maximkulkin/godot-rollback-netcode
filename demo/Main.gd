@@ -129,7 +129,7 @@ func _on_ResetButton_pressed() -> void:
 		peer.close_connection()
 	get_tree().reload_current_scene()
 
-func setup_match_for_replay(my_peer_id: int, peer_ids: Array, match_info: Dictionary) -> void:
+func setup_match_for_replay(my_peer_id: int, peer_ids: Array, _match_info: Dictionary) -> void:
 	var client_peer_id: int
 	if my_peer_id == 1:
 		client_peer_id = peer_ids[0]
