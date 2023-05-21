@@ -12,7 +12,7 @@ func _enter_tree() -> void:
 	
 	add_autoload_singleton("SyncManager", "res://addons/godot-rollback-netcode/SyncManager.gd")
 	
-	log_inspector = LogInspector.instance()
+	log_inspector = LogInspector.instantiate()
 	get_editor_interface().get_base_control().add_child(log_inspector)
 	log_inspector.set_editor_interface(get_editor_interface())
 	add_tool_menu_item("Log inspector...", self, "open_log_inspector")

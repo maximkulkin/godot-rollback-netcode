@@ -18,7 +18,7 @@ func _create_or_get_peer_status(peer_id: int):
 	if peer_status:
 		return get_node(peer_id_str)
 	
-	peer_status = PeerStatus.instance()
+	peer_status = PeerStatus.instantiate()
 	peer_status.name = peer_id_str
 	add_child(peer_status)
 	

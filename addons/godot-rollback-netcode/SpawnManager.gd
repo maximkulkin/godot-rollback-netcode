@@ -80,7 +80,7 @@ func _instance_scene(resource_path: String) -> Node:
 	
 	#print ("Instancing new %s" % resource_path)
 	var scene = load(resource_path)
-	return scene.instance()
+	return scene.instantiate()
 
 func spawn(name: String, parent: Node, scene: PackedScene, data: Dictionary, rename: bool = true, signal_name: String = '') -> Node:
 	var spawned_node = _instance_scene(scene.resource_path)

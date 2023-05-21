@@ -26,7 +26,7 @@ func create_debug_overlay(overlay_instance = null) -> void:
 		_canvas_layer.remove_child(_debug_overlay)
 	
 	if overlay_instance == null:
-		overlay_instance = DebugOverlay.instance()
+		overlay_instance = DebugOverlay.instantiate()
 	if _canvas_layer == null:
 		_canvas_layer = CanvasLayer.new()
 		add_child(_canvas_layer)

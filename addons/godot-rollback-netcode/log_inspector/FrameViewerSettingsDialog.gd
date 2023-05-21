@@ -56,7 +56,7 @@ func _rebuild_peer_time_offset_fields() -> void:
 	
 	# Re-create new fields and connect the signals.
 	for peer_id in log_data.peer_ids:
-		var child = TimeOffsetSetting.instance()
+		var child = TimeOffsetSetting.instantiate()
 		child.name = str(peer_id)
 		time_offset_container.add_child(child)
 		child.setup_time_offset_setting("Peer %s" % peer_id, log_data.peer_time_offsets[peer_id])
