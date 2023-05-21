@@ -70,8 +70,8 @@ func set_cursor_time(_cursor_time: int) -> void:
 		
 		var relative_cursor_time = cursor_time - start_time
 		if relative_cursor_time < 0:
-			set_start_time(cursor_time - (rect_size.x - CURSOR_SCROLL_GAP))
-		elif relative_cursor_time > rect_size.x:
+			set_start_time(cursor_time - (size.x - CURSOR_SCROLL_GAP))
+		elif relative_cursor_time > size.x:
 			set_start_time(cursor_time - CURSOR_SCROLL_GAP)
 
 func _ready() -> void:
@@ -236,13 +236,13 @@ func _draw() -> void:
 	var draw_data := {}
 	var peer_rects := {}
 	
-	var peer_height: float = (rect_size.y - ((peer_count - 1) * PEER_GAP)) / peer_count
+	var peer_height: float = (size.y - ((peer_count - 1) * PEER_GAP)) / peer_count
 	var current_y := 0
 	for peer_index in range(peer_count):
 		var peer_id = log_data.peer_ids[peer_index]
 		var peer_rect := Rect2(
 			Vector2(0, current_y),
-			Vector2(rect_size.x, peer_height))
+			Vector2(size.x, peer_height))
 		peer_rects[peer_id] = peer_rect
 		_draw_peer(peer_id, peer_rect, draw_data)
 		current_y += (peer_height + PEER_GAP)
@@ -257,9 +257,9 @@ func _draw() -> void:
 		var peer_rect: Rect2 = peer_rects[peer_id]
 		draw_string(_font, peer_rect.position + Vector2(0, PEER_GAP), "Peer %s" % peer_id, Color(1.0, 1.0, 1.0))
 	
-	if cursor_time >= start_time and cursor_time <= start_time + rect_size.x:
+	if cursor_time >= start_time and cursor_time <= start_time + size.x:
 		draw_line(
 			Vector2(cursor_time - start_time, 0),
-			Vector2(cursor_time - start_time, rect_size.y),
+			Vector2(cursor_time - start_time, size.y),
 			Color(1.0, 0.0, 0.0),
 			3.0)
