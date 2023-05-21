@@ -107,7 +107,7 @@ func _do_setup_match1(my_peer_id: int, peer_ids: Array, match_info: Dictionary) 
 	for peer_id in peer_ids:
 		SyncManager.add_peer(peer_id)
 	
-	if get_tree().change_scene(match_scene_path) != OK:
+	if get_tree().change_scene_to_file(match_scene_path) != OK:
 		_show_error_and_quit("Unable to change scene to: %s" % match_scene_path)
 		return
 	
