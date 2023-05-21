@@ -149,14 +149,14 @@ func begin_interframe() -> void:
 	if not data.has('frame_type'):
 		data['frame_type'] = FrameType.INTERFRAME
 	if not data.has('start_time'):
-		data['start_time'] = OS.get_system_time_msecs()
+		data['start_time'] = Time.get_ticks_msec()
 
 func end_interframe() -> void:
 	if not data.has('frame_type'):
 		data['frame_type'] = FrameType.INTERFRAME
 	if not data.has('start_time'):
-		data['start_time'] = OS.get_system_time_msecs() - 1
-	data['end_time'] = OS.get_system_time_msecs()
+		data['start_time'] = Time.get_ticks_msec() - 1
+	data['end_time'] = Time.get_ticks_msec()
 	write_current_data()
 
 func begin_tick(tick: int) -> void:
@@ -165,11 +165,11 @@ func begin_tick(tick: int) -> void:
 	
 	data['frame_type'] = FrameType.TICK
 	data['tick'] = tick
-	data['start_time'] = OS.get_system_time_msecs()
+	data['start_time'] = Time.get_ticks_msec()
 
 func end_tick(start_ticks_usecs: int) -> void:
-	data['end_time'] = OS.get_system_time_msecs()
-	data['duration'] = float(OS.get_ticks_usec() - start_ticks_usecs) / 1000.0
+	data['end_time'] = Time.get_ticks_msec()
+	data['duration'] = float(Time.get_ticks_usec() - start_ticks_usecs) / 1000.0
 	write_current_data()
 
 func skip_tick(skip_reason: int, start_ticks_usecs: int) -> void:
@@ -183,16 +183,16 @@ func begin_interpolation_frame(tick: int) -> void:
 	
 	data['frame_type'] = FrameType.INTERPOLATION_FRAME
 	data['tick'] = tick
-	data['start_time'] = OS.get_system_time_msecs()
+	data['start_time'] = Time.get_ticks_msec()
 
 func end_interpolation_frame(start_ticks_usecs: int) -> void:
-	data['end_time'] = OS.get_system_time_msecs()
-	data['duration'] = float(OS.get_ticks_usec() - start_ticks_usecs) / 1000.0
+	data['end_time'] = Time.get_ticks_msec()
+	data['duration'] = float(Time.get_ticks_usec() - start_ticks_usecs) / 1000.0
 	write_current_data()
 
 func log_fatal_error(msg: String) -> void:
 	if not data.has('end_time'):
-		data['end_time'] = OS.get_system_time_msecs()
+		data['end_time'] = Time.get_ticks_msec()
 	data['fatal_error'] = true
 	data['fatal_error_message'] = msg
 	write_current_data()
@@ -219,12 +219,12 @@ func increment_value(key: String, amount: int = 1) -> void:
 
 func start_timing(timer: String) -> void:
 	assert(not _start_times.has(timer), "Timer already exists: %s" % timer)
-	_start_times[timer] = OS.get_ticks_usec()
+	_start_times[timer] = Time.get_ticks_usec()
 
 func stop_timing(timer: String, accumulate: bool = false) -> void:
 	assert(_start_times.has(timer), "No such timer: %s" % timer)
 	if _start_times.has(timer):
-		add_timing(timer, float(OS.get_ticks_usec() - _start_times[timer]) / 1000.0, accumulate)
+		add_timing(timer, float(Time.get_ticks_usec() - _start_times[timer]) / 1000.0, accumulate)
 		_start_times.erase(timer)
 
 func add_timing(timer: String, msecs: float, accumulate: bool = false) -> void:

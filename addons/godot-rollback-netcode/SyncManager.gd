@@ -395,7 +395,7 @@ func _on_ping_timer_timeout() -> void:
 	if peers.size() == 0:
 		return
 	var msg = {
-		local_time = OS.get_system_time_msecs(),
+		local_time = Time.get_ticks_msec(),
 	}
 	for peer_id in peers:
 		assert(peer_id != network_adaptor.get_network_unique_id(), "Cannot ping ourselves")
@@ -403,11 +403,11 @@ func _on_ping_timer_timeout() -> void:
 
 func _on_received_ping(peer_id: int, msg: Dictionary) -> void:
 	assert(peer_id != network_adaptor.get_network_unique_id(), "Cannot ping back ourselves")
-	msg['remote_time'] = OS.get_system_time_msecs()
+	msg['remote_time'] = Time.get_ticks_msec()
 	network_adaptor.send_ping_back(peer_id, msg)
 
 func _on_received_ping_back(peer_id: int, msg: Dictionary) -> void:
-	var system_time = OS.get_system_time_msecs()
+	var system_time = Time.get_ticks_msec()
 	var peer = peers[peer_id]
 	peer.last_ping_received = system_time
 	peer.rtt = system_time - msg['local_time']
@@ -996,7 +996,7 @@ func _physics_process(_delta: float) -> void:
 		_logger.data['input_complete_tick'] = _input_complete_tick
 		_logger.data['state_complete_tick'] = _state_complete_tick
 	
-	var start_time := OS.get_ticks_usec()
+	var start_time := Time.get_ticks_usec()
 	
 	# @todo Is there a way we can move this to _remote_start()?
 	# Store an initial state before any ticks.
@@ -1209,7 +1209,7 @@ func _physics_process(_delta: float) -> void:
 	_ran_physics_process = true
 	_ticks_since_last_interpolation_frame += 1
 	
-	var total_time_msecs = float(OS.get_ticks_usec() - start_time) / 1000.0
+	var total_time_msecs = float(Time.get_ticks_usec() - start_time) / 1000.0
 	if debug_physics_process_msecs > 0 and total_time_msecs > debug_physics_process_msecs:
 		push_error("[%s] SyncManager._physics_process() took %.02fms" % [current_tick, total_time_msecs])
 	
@@ -1220,7 +1220,7 @@ func _process(delta: float) -> void:
 	if not started:
 		return
 	
-	var start_time = OS.get_ticks_usec()
+	var start_time = Time.get_ticks_usec()
 	
 	# These are things that we want to run during "interpolation frames", in
 	# order to slim down the normal frames. Or, if interpolation is disabled,
@@ -1263,7 +1263,7 @@ func _process(delta: float) -> void:
 	# preceeded by _physics_process().
 	_ran_physics_process = false
 	
-	var total_time_msecs = float(OS.get_ticks_usec() - start_time) / 1000.0
+	var total_time_msecs = float(Time.get_ticks_usec() - start_time) / 1000.0
 	if debug_process_msecs > 0 and total_time_msecs > debug_process_msecs:
 		push_error("[%s] SyncManager._process() took %.02fms" % [current_tick, total_time_msecs])
 
