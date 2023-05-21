@@ -215,9 +215,9 @@ func _draw_network_arrows(start_positions: Dictionary, end_positions: Dictionary
 		var vector: Vector2 = end_position - start_position
 		var t := Transform2D(vector.angle(), end_position)
 		var points := PackedVector2Array([
-			t.xform(Vector2(0, 0)),
-			t.xform(Vector2(-NETWORK_ARROW_SIZE, sqrt12 * NETWORK_ARROW_SIZE)),
-			t.xform(Vector2(-NETWORK_ARROW_SIZE, sqrt12 * -NETWORK_ARROW_SIZE)),
+			t.basis_xform(Vector2(0, 0)),
+			t.basis_xform(Vector2(-NETWORK_ARROW_SIZE, sqrt12 * NETWORK_ARROW_SIZE)),
+			t.basis_xform(Vector2(-NETWORK_ARROW_SIZE, sqrt12 * -NETWORK_ARROW_SIZE)),
 		])
 		var colors := PackedColorArray([
 			color,
