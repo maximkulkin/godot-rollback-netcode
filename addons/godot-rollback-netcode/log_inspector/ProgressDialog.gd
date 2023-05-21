@@ -1,8 +1,8 @@
 tool
 extends PopupDialog
 
-onready var label = $MarginContainer/VBoxContainer/Label
-onready var progress_bar = $MarginContainer/VBoxContainer/ProgressBar
+@onready var label = $MarginContainer/VBoxContainer/Label
+@onready var progress_bar = $MarginContainer/VBoxContainer/ProgressBar
 
 func set_label(text: String) -> void:
 	label.text = text

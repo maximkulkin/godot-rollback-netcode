@@ -4,20 +4,20 @@ extends Control
 const LogData = preload("res://addons/godot-rollback-netcode/log_inspector/LogData.gd")
 const ReplayServer = preload("res://addons/godot-rollback-netcode/log_inspector/ReplayServer.gd")
 
-onready var file_dialog = $FileDialog
-onready var progress_dialog = $ProgressDialog
-onready var data_description_label = $MarginContainer/VBoxContainer/LoadToolbar/DataDescriptionLabel
-onready var data_description_label_default_text = data_description_label.text
-onready var mode_button = $MarginContainer/VBoxContainer/LoadToolbar/ModeButton
-onready var state_input_viewer = $MarginContainer/VBoxContainer/StateInputViewer
-onready var frame_viewer = $MarginContainer/VBoxContainer/FrameViewer
-onready var replay_server = $ReplayServer
-onready var replay_server_status_label = $MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer/ReplayStatusLabel
-onready var start_server_button = $MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer/StartServerButton
-onready var stop_server_button = $MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer/StopServerButton
-onready var disconnect_button = $MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer/DisconnectButton
-onready var launch_game_button = $MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer/HBoxContainer/LaunchGameButton
-onready var show_peer_field = $MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer/HBoxContainer/ShowPeerField
+@onready var file_dialog = $FileDialog
+@onready var progress_dialog = $ProgressDialog
+@onready var data_description_label = $MarginContainer/VBoxContainer/LoadToolbar/DataDescriptionLabel
+@onready var data_description_label_default_text = data_description_label.text
+@onready var mode_button = $MarginContainer/VBoxContainer/LoadToolbar/ModeButton
+@onready var state_input_viewer = $MarginContainer/VBoxContainer/StateInputViewer
+@onready var frame_viewer = $MarginContainer/VBoxContainer/FrameViewer
+@onready var replay_server = $ReplayServer
+@onready var replay_server_status_label = $MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer/ReplayStatusLabel
+@onready var start_server_button = $MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer/StartServerButton
+@onready var stop_server_button = $MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer/StopServerButton
+@onready var disconnect_button = $MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer/DisconnectButton
+@onready var launch_game_button = $MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer/HBoxContainer/LaunchGameButton
+@onready var show_peer_field = $MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer/HBoxContainer/ShowPeerField
 
 enum DataMode {
 	STATE_INPUT,

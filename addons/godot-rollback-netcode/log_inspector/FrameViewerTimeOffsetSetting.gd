@@ -1,8 +1,8 @@
 tool
 extends HBoxContainer
 
-onready var peer_label = $PeerLabel
-onready var offset_value_field = $OffsetValue
+@onready var peer_label = $PeerLabel
+@onready var offset_value_field = $OffsetValue
 
 signal time_offset_changed (value)
 

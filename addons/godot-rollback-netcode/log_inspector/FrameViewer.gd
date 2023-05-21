@@ -5,13 +5,13 @@ const Logger = preload("res://addons/godot-rollback-netcode/Logger.gd")
 const ReplayServer = preload("res://addons/godot-rollback-netcode/log_inspector/ReplayServer.gd")
 const LogData = preload("res://addons/godot-rollback-netcode/log_inspector/LogData.gd")
 
-onready var time_field = $VBoxContainer/HBoxContainer/Time
-onready var seek_on_replay_peer_field = $VBoxContainer/HBoxContainer/SeekOnReplayPeerField
-onready var auto_replay_to_current_field = $VBoxContainer/HBoxContainer/ReplayContainer/HBoxContainer/AutoReplayToCurrentField
-onready var replay_to_current_button = $VBoxContainer/HBoxContainer/ReplayContainer/HBoxContainer/ReplayToCurrentButton
-onready var data_graph = $VBoxContainer/VSplitContainer/DataGraph
-onready var data_grid = $VBoxContainer/VSplitContainer/DataGrid
-onready var settings_dialog = $SettingsDialog
+@onready var time_field = $VBoxContainer/HBoxContainer/Time
+@onready var seek_on_replay_peer_field = $VBoxContainer/HBoxContainer/SeekOnReplayPeerField
+@onready var auto_replay_to_current_field = $VBoxContainer/HBoxContainer/ReplayContainer/HBoxContainer/AutoReplayToCurrentField
+@onready var replay_to_current_button = $VBoxContainer/HBoxContainer/ReplayContainer/HBoxContainer/ReplayToCurrentButton
+@onready var data_graph = $VBoxContainer/VSplitContainer/DataGraph
+@onready var data_grid = $VBoxContainer/VSplitContainer/DataGrid
+@onready var settings_dialog = $SettingsDialog
 
 var log_data: LogData
 var replay_server: ReplayServer
