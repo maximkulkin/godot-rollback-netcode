@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://addons/godot-rollback-netcode/log_inspector/FrameViewerSettingsDialog.gd" id="1"]
 
 [node name="FrameViewerSettingsDialog" type="Window"]
+size = Vector2i(800, 400)
 script = ExtResource("1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -53,6 +54,8 @@ text = "Max rollback ticks"
 
 [node name="MaxRollbackTicks" type="LineEdit" parent="MarginContainer/GridContainer"]
 layout_mode = 2
+caret_blink = true
+caret_blink_interval = 0.5
 
 [node name="TimeOffsetLabel" type="Label" parent="MarginContainer/GridContainer"]
 layout_mode = 2
@@ -61,8 +64,4 @@ text = "Time offsets"
 [node name="TimeOffsetContainer" type="VBoxContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[connection signal="toggled" from="MarginContainer/GridContainer/ShowNetworkArrows" to="." method="_on_ShowNetworkArrows_toggled"]
-[connection signal="item_selected" from="MarginContainer/GridContainer/NetworkArrowsPeer1" to="." method="_on_NetworkArrowsPeer1_item_selected"]
-[connection signal="item_selected" from="MarginContainer/GridContainer/NetworkArrowsPeer2" to="." method="_on_NetworkArrowsPeer2_item_selected"]
-[connection signal="pressed" from="MarginContainer/GridContainer/ShowRollbackTicks" to="." method="_on_ShowRollbackTicks_pressed"]
-[connection signal="text_changed" from="MarginContainer/GridContainer/MaxRollbackTicks" to="." method="_on_MaxRollbackTicks_text_changed"]
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

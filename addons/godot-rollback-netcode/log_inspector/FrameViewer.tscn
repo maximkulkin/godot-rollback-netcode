@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/godot-rollback-netcode/log_inspector/FrameViewer.gd" id="1"]
 [ext_resource type="PackedScene" path="res://addons/godot-rollback-netcode/log_inspector/FrameDataGraph.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://addons/godot-rollback-netcode/log_inspector/FrameViewerSettingsDialog.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b61xuuo1le26m" path="res://addons/godot-rollback-netcode/log_inspector/FrameViewerSettingsDialog.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://addons/godot-rollback-netcode/log_inspector/FrameDataGrid.tscn" id="4"]
 
 [node name="FrameViewer" type="Control"]
@@ -97,6 +97,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="SettingsDialog" parent="." instance=ExtResource("3")]
+visible = false
 
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/Time" to="." method="_on_Time_value_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

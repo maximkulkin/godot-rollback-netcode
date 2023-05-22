@@ -14,6 +14,7 @@ func _enter_tree() -> void:
 	
 	log_inspector = LogInspector.instantiate()
 	get_editor_interface().get_base_control().add_child(log_inspector)
+	log_inspector.hide()
 	log_inspector.set_editor_interface(get_editor_interface())
 	add_tool_menu_item("Log inspector...", open_log_inspector)
 	

@@ -194,3 +194,7 @@ func _on_DisconnectButton_pressed() -> void:
 
 func _on_ShowPeerField_item_selected(index: int) -> void:
 	refresh_replay()
+
+
+func _on_close_requested() -> void:
+	hide()

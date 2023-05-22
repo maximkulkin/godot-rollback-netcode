@@ -98,3 +98,7 @@ func _on_MaxRollbackTicks_text_changed(new_text: String) -> void:
 		if value_int > 0:
 			data_graph.canvas.max_rollback_ticks = value_int
 			data_graph.canvas.update()
+
+
+func _on_close_requested() -> void:
+	hide()

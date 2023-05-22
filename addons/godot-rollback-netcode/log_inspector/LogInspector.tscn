@@ -1,237 +1,144 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://dijp648ncdmuk"]
 
-[ext_resource path="res://addons/godot-rollback-netcode/log_inspector/ProgressDialog.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/godot-rollback-netcode/log_inspector/LogInspector.gd" type="Script" id=2]
-[ext_resource path="res://addons/godot-rollback-netcode/log_inspector/StateInputViewer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/godot-rollback-netcode/log_inspector/FrameViewer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/godot-rollback-netcode/log_inspector/ReplayServer.gd" type="Script" id=5]
+[ext_resource type="PackedScene" path="res://addons/godot-rollback-netcode/log_inspector/ProgressDialog.tscn" id="1"]
+[ext_resource type="Script" path="res://addons/godot-rollback-netcode/log_inspector/LogInspector.gd" id="2"]
+[ext_resource type="PackedScene" path="res://addons/godot-rollback-netcode/log_inspector/StateInputViewer.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ccunslq4v6df7" path="res://addons/godot-rollback-netcode/log_inspector/FrameViewer.tscn" id="4"]
+[ext_resource type="Script" path="res://addons/godot-rollback-netcode/log_inspector/ReplayServer.gd" id="5"]
 
 [node name="LogInspector" type="Window"]
-offset_right = 981.0
-offset_bottom = 653.0
-window_title = "Rollback log inspector"
-resizable = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+size = Vector2i(1200, 600)
+script = ExtResource("2")
 
 [node name="FileDialog" type="FileDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -300.0
-offset_right = 400.0
-offset_bottom = 300.0
-window_title = "Open File(s)"
 mode = 1
 access = 2
-filters = PackedStringArray( "*.log ; Log files" )
-current_dir = "/home/dsnopek/.local/share/godot/app_userdata/Godot Rollback Netcode Demo/detailed_logs/"
-current_path = "/home/dsnopek/.local/share/godot/app_userdata/Godot Rollback Netcode Demo/detailed_logs/"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+filters = PackedStringArray("*.log ; Log files")
 
-[node name="ProgressDialog" parent="." instance=ExtResource( 1 )]
+[node name="ProgressDialog" parent="." instance=ExtResource("1")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_top = 10
 theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 971.0
-offset_bottom = 643.0
+layout_mode = 2
 theme_override_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LoadToolbar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_right = 961.0
-offset_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer/LoadToolbar"]
-offset_right = 44.0
-offset_bottom = 20.0
+layout_mode = 2
 text = "Clear"
 
 [node name="AddLogButton" type="Button" parent="MarginContainer/VBoxContainer/LoadToolbar"]
-offset_left = 48.0
-offset_right = 111.0
-offset_bottom = 20.0
+layout_mode = 2
 text = "Add Log"
 
 [node name="Separator1" type="Control" parent="MarginContainer/VBoxContainer/LoadToolbar"]
-offset_left = 115.0
-offset_right = 323.0
-offset_bottom = 20.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ModeButton" type="OptionButton" parent="MarginContainer/VBoxContainer/LoadToolbar"]
-offset_left = 327.0
-offset_right = 536.0
-offset_bottom = 20.0
+layout_mode = 2
 size_flags_horizontal = 3
-text = "Frame"
-items = [ "State/Input", null, false, 0, null, "Frame", null, false, 1, null ]
-selected = 1
 
 [node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer/LoadToolbar"]
-offset_left = 540.0
-offset_right = 748.0
-offset_bottom = 20.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="DataDescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/LoadToolbar"]
-offset_left = 752.0
-offset_top = 3.0
-offset_right = 961.0
-offset_bottom = 17.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "0 logs loaded"
-align = 2
 
 [node name="ReplayToolbar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 30.0
-offset_right = 961.0
-offset_bottom = 64.0
+layout_mode = 2
 
 [node name="ReplayLabel" type="Label" parent="MarginContainer/VBoxContainer/ReplayToolbar"]
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 24.0
+layout_mode = 2
 text = "REPLAY:"
 
 [node name="Seperator1" type="Control" parent="MarginContainer/VBoxContainer/ReplayToolbar"]
-offset_left = 54.0
-offset_right = 79.0
-offset_bottom = 34.0
-custom_minimum_size = Vector2( 25, 0 )
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
 
 [node name="ServerContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ReplayToolbar"]
-offset_left = 83.0
-offset_right = 497.0
-offset_bottom = 34.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer"]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 407.0
-offset_bottom = 27.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer"]
-offset_top = 3.0
-offset_right = 44.0
-offset_bottom = 17.0
+layout_mode = 2
 text = "Server:"
 
 [node name="ReplayStatusLabel" type="Label" parent="MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer"]
-offset_left = 48.0
-offset_top = 3.0
-offset_right = 223.0
-offset_bottom = 17.0
-custom_minimum_size = Vector2( 175, 0 )
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
 text = "Listening..."
 clip_text = true
 
 [node name="StartServerButton" type="Button" parent="MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer"]
-offset_left = 227.0
-offset_right = 268.0
-offset_bottom = 20.0
+layout_mode = 2
 text = "Start"
 
 [node name="StopServerButton" type="Button" parent="MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer"]
-offset_left = 272.0
-offset_right = 312.0
-offset_bottom = 20.0
+layout_mode = 2
 text = "Stop"
 
 [node name="DisconnectButton" type="Button" parent="MarginContainer/VBoxContainer/ReplayToolbar/ServerContainer/HBoxContainer"]
-offset_left = 316.0
-offset_right = 400.0
-offset_bottom = 20.0
+layout_mode = 2
 text = "Disconnect"
 
 [node name="Seperator2" type="Control" parent="MarginContainer/VBoxContainer/ReplayToolbar"]
-offset_left = 501.0
-offset_right = 526.0
-offset_bottom = 34.0
-custom_minimum_size = Vector2( 25, 0 )
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
 
 [node name="ClientContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ReplayToolbar"]
-offset_left = 530.0
-offset_right = 790.0
-offset_bottom = 34.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer"]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 253.0
-offset_bottom = 27.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer/HBoxContainer"]
-offset_top = 3.0
-offset_right = 41.0
-offset_bottom = 17.0
+layout_mode = 2
 text = "Client:"
 
 [node name="LaunchGameButton" type="Button" parent="MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer/HBoxContainer"]
-offset_left = 45.0
-offset_right = 102.0
-offset_bottom = 20.0
+layout_mode = 2
 text = "Launch"
 
 [node name="Seperator1" type="Control" parent="MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer/HBoxContainer"]
-offset_left = 106.0
-offset_right = 131.0
-offset_bottom = 20.0
-custom_minimum_size = Vector2( 25, 0 )
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
 
 [node name="ShowPeerLabel" type="Label" parent="MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer/HBoxContainer"]
-offset_left = 135.0
-offset_top = 3.0
-offset_right = 172.0
-offset_bottom = 17.0
+layout_mode = 2
 text = "Show:"
 
 [node name="ShowPeerField" type="OptionButton" parent="MarginContainer/VBoxContainer/ReplayToolbar/ClientContainer/HBoxContainer"]
-offset_left = 176.0
-offset_right = 246.0
-offset_bottom = 20.0
-text = "Peer 1"
-items = [ "Peer 1", null, false, 0, null ]
-selected = 0
+layout_mode = 2
 
-[node name="FrameViewer" parent="MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 74.0
-offset_right = 961.0
-offset_bottom = 633.0
+[node name="FrameViewer" parent="MarginContainer/VBoxContainer" instance=ExtResource("4")]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StateInputViewer" parent="MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+[node name="StateInputViewer" parent="MarginContainer/VBoxContainer" instance=ExtResource("3")]
 visible = false
+layout_mode = 2
 
 [node name="ReplayServer" type="Node" parent="."]
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [connection signal="about_to_popup" from="." to="." method="_on_LogInspector_about_to_popup"]
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="files_selected" from="FileDialog" to="." method="_on_FileDialog_files_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LoadToolbar/ClearButton" to="." method="_on_ClearButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LoadToolbar/AddLogButton" to="." method="_on_AddLogButton_pressed"]
