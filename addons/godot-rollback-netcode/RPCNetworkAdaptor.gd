@@ -44,7 +44,7 @@ func get_network_unique_id() -> int:
 
 # _rit is short for _receive_input_tick. The method name ends up in each message
 # so, we're trying to keep it short.
-@rpc("unreliable")
+@rpc("any_peer", "unreliable")
 func _rit(msg: PackedByteArray) -> void:
 	emit_signal("received_input_tick", multiplayer.get_remote_sender_id(), msg)
 
