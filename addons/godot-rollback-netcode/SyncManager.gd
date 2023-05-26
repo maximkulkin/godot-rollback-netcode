@@ -174,13 +174,13 @@ var debug_check_local_state_consistency := false
 # In seconds, because we don't want it to be dependent on the network tick.
 var ping_frequency := 1.0: set = set_ping_frequency
 
-var input_tick: int = 0: set = _set_readonly_variable
-var current_tick: int = 0: set = _set_readonly_variable
-var skip_ticks: int = 0: set = _set_readonly_variable
-var rollback_ticks: int = 0: set = _set_readonly_variable
-var requested_input_complete_tick: int = 0: set = _set_readonly_variable
-var started := false: set = _set_readonly_variable
-var tick_time: float: set = _set_readonly_variable
+var input_tick: int = 0
+var current_tick: int = 0
+var skip_ticks: int = 0
+var rollback_ticks: int = 0
+var requested_input_complete_tick: int = 0
+var started := false
+var tick_time: float
 
 var _host_starting := false
 var _ping_timer: Timer
@@ -292,8 +292,6 @@ func _ready() -> void:
 	if hash_serializer == null:
 		set_hash_serializer(_create_class_from_project_settings('network/rollback/classes/hash_serializer', DEFAULT_HASH_SERIALIZER_PATH))
 
-func _set_readonly_variable(_value) -> void:
-	pass
 
 func _create_class_from_project_settings(setting_name: String, default_path: String):
 	var class_path := ''
