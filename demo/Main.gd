@@ -122,7 +122,7 @@ func _on_SyncManager_sync_error(msg: String) -> void:
 func _on_ResetButton_pressed() -> void:
 	SyncManager.stop()
 	SyncManager.clear_peers()
-	var peer = multiplayer.network_peer
+	var peer = multiplayer.multiplayer_peer
 	if peer:
 		peer.close_connection()
 	get_tree().reload_current_scene()
